@@ -17,3 +17,7 @@ code {
 #root {
   margin-left: 50px;
 }
+
+button {
+  margin: 5px;
+}
