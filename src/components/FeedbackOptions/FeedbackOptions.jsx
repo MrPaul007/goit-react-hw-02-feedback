@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-function FeedbackOptions({ options, onClick }) {
+function FeedbackOptions({ options, handleClick }) {
   return options.map(option => (
-    <button type="button" className="btn" onClick={onClick} key={option.id} name={option.id}>
-      {option.title}
+    <button type="button" key={option} className="btn" onClick={() => handleClick(option)}>
+      {option}
     </button>));
 };
 

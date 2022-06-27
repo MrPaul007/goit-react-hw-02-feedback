@@ -1,9 +1,10 @@
 import { Component } from 'react';
-import options from "./options"
 import Section from "./components/Section/Section";
 import FeedbackOptions from "./components/FeedbackOptions/FeedbackOptions";
 import Statistic from "./components/Statistics/Statistics";
 import Notification from "./components/Notification/Notification";
+
+const options = ["good", "neutral", "bad"];
 
 class App extends Component {
   state = {
@@ -12,8 +13,7 @@ class App extends Component {
     bad: 0
   };
 
-  onLeaveFeedback = event => {
-    let key = event.target.textContent;
+  onLeaveFeedback = key => {
     this.setState(prevState => ({
       [key]: prevState[key] +1
     }));
@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <>
          <Section title='Please leave feedback'
-            children={<FeedbackOptions options ={options} onClick={this.onLeaveFeedback} />}
+            children={<FeedbackOptions options ={options} handleClick={this.onLeaveFeedback} />}
          />
          <Section title='Statistics' 
               children={allFeedbacks ? <Statistic good={good} neutral={neutral} bad={bad} total={allFeedbacks} positivePercents={this.countPositiveFeedbackPercentage()}/> : <Notification message="There is no feedback" />}
