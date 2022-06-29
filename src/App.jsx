@@ -31,15 +31,15 @@ class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
-    let allFeedbacks = this.countTotalFeedback();
+    const allFeedbacks = this.countTotalFeedback();
     return (
       <>
-         <Section title='Please leave feedback'
-            children={<FeedbackOptions options ={options} handleClick={this.onLeaveFeedback} />}
-         />
-         <Section title='Statistics' 
-              children={allFeedbacks ? <Statistic good={good} neutral={neutral} bad={bad} total={allFeedbacks} positivePercents={this.countPositiveFeedbackPercentage()}/> : <Notification message="There is no feedback" />}
-         />
+          <Section title='Please leave feedback' >
+            <FeedbackOptions options ={options} onLeaveFeedback={this.onLeaveFeedback} />
+          </Section>
+          <Section title='Statistics' >
+              {allFeedbacks ? <Statistic good={good} neutral={neutral} bad={bad} total={allFeedbacks} positivePercentage={this.countPositiveFeedbackPercentage()}/> : <Notification message="There is no feedback" />}
+          </Section>
       </>
     );
   }

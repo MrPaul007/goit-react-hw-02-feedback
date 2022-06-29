@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
 
-function FeedbackOptions({ options, handleClick }) {
+function FeedbackOptions({ options, onLeaveFeedback }) {
   return options.map(option => (
-    <button type="button" key={option} className="btn" onClick={() => handleClick(option)}>
+    <button type="button" key={option} className="btn" onClick={() => onLeaveFeedback(option)}>
       {option}
     </button>));
 };
 
 FeedbackOptions.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  options: PropTypes.array.isRequired
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default FeedbackOptions;
